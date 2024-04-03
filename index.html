@@ -9,40 +9,26 @@
 </head>
 <body>
     <!-- Display user information here -->
-    <div id="crop-info">
+    <div id="user-info">
         <!-- User data will be displayed here -->
     </div>
 
     <script>
-    // Make an AJAX request to the PHP script
-$.ajax({
-    url: 'https://mwin-nom.github.io/proxy.php?url=http://vineyardlodge.uksouth.cloudapp.azure.com/', // Adjust the URL to the location of your PHP script
-    type: 'GET',
-    dataType: 'json',
-    success: function(data) {
-        // Check if data is not empty
-        if (data.length > 0) {
-            // Assuming the first row's data represents a crop
-            var cropInfo = data[0];
+    $.ajax({
+        url: 'https://randomuser.me/api/',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          console.log('success', data);
 
-            // Construct HTML to display crop information
-            var cropHtml = '<p>Crop Name: ' + cropInfo.crop_name + '</p>';
-            cropHtml += '<p>Quantity: ' + cropInfo.quantity + '</p>';
-            // Add more fields as needed
-
-            // Display crop information in the #crop-info div
-            $('#crop-info').html(cropHtml);
-        } else {
-            // If no crops found, display a message
-            $('#crop-info').html('<p>No crops found</p>');
+          var userInfo = data.results[0]; // Assuming the first user's data is in the results array
+          var userHtml = '<p>Name: ' + userInfo.name.first + ' ' + userInfo.name.last + '</p>';
+          userHtml += '<p>Email: ' + userInfo.email + '</p>';
+          
+          // Display user information in the #user-info div
+          $('#user-info').html(userHtml);
         }
-    },
-    error: function(xhr, status, error) {
-        // Handle errors
-        console.error('Error:', error);
-    }
-});
-
+      });
     </script>
 </body>
 </html>
