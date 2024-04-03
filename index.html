@@ -3,19 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Random User Data</title>
+    <!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+    <!-- Display user information here -->
+    <div id="user-info">
+        <!-- User data will be displayed here -->
+    </div>
+
     <script>
     $.ajax({
-        url: 'https://eo99mtt3ss752hw.m.pipedream.net',
+        url: 'https://randomuser.me/api/',
         type: 'GET',
         dataType: 'json',
         success: function(data) {
-          console.log(data);
+          console.log('success', data);
+
+          var userInfo = data.results[0]; // Assuming the first user's data is in the results array
+          var userHtml = '<p>Name: ' + userInfo.name.first + ' ' + userInfo.name.last + '</p>';
+          userHtml += '<p>Email: ' + userInfo.email + '</p>';
+          
+          // Display user information in the #user-info div
+          $('#user-info').html(userHtml);
         }
       });
-          </script>
+    </script>
 </body>
 </html>
-
