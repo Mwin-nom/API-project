@@ -9,14 +9,14 @@
 </head>
 <body>
     <!-- Display user information here -->
-    <div id="user-info">
+    <div id="crop-info">
         <!-- User data will be displayed here -->
     </div>
 
     <script>
     // Make an AJAX request to the PHP script
 $.ajax({
-    url: 'get_farmer_crops.php', // Adjust the URL to the location of your PHP script
+    url: 'https://mwin-nom.github.io/proxy.php?url=http://vineyardlodge.uksouth.cloudapp.azure.com/', // Adjust the URL to the location of your PHP script
     type: 'GET',
     dataType: 'json',
     success: function(data) {
