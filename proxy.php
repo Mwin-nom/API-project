@@ -1,6 +1,6 @@
 <?php
 // Get the URL to proxy from the query string parameter
-$url = isset($_GET['url']) ? $_GET['url'] : '';
+$url = isset($_GET['http://vineyardlodge.uksouth.cloudapp.azure.com/']) ? $_GET['http://vineyardlodge.uksouth.cloudapp.azure.com/'] : '';
 
 // Check if the URL is provided and not empty
 if (!empty($url)) {
